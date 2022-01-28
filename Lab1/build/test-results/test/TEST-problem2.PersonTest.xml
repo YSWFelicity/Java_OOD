@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="problem2.PersonTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-01-28T00:19:26" hostname="Yingshus-MBP" time="0.012">
-  <properties/>
-  <testcase name="getAddress()" classname="problem2.PersonTest" time="0.001"/>
-  <testcase name="getName()" classname="problem2.PersonTest" time="0.005"/>
-  <testcase name="getEmail()" classname="problem2.PersonTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
