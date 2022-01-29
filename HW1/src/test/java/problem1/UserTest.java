@@ -13,7 +13,7 @@ class UserTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        credentials1 = new Credentials("abc", "######");
+        credentials1 = new Credentials("abc", "#####");
         eason = new User("Eason", "Lee","3012654560", "eason@gmail.com", credentials1);
         credentials2 = new Credentials("efg", "!!!!!");
         rachel = new User("Rachel","Lee","2053032640", "rachel@gmail.com", credentials2);
@@ -69,15 +69,16 @@ class UserTest {
 
     @Test
     void setEmailAddress() {
-        eason.setEmailAddress("eason@yahoo.com");
-        assertEquals("eason@yahoo.com",eason.getEmailAddress());
-        rachel.setEmailAddress("rachel@yahoo.com");
-        assertEquals("rachel@yahoo.com",rachel.getEmailAddress());
+        eason.setEmailAddress("amy@yahoo.com");
+        assertEquals("amy@yahoo.com",eason.getEmailAddress());
+        rachel.setEmailAddress("felicity@yahoo.com");
+        assertEquals("felicity@yahoo.com",rachel.getEmailAddress());
     }
 
     @Test
     void getCredentialPair() {
         assertEquals(credentials1, eason.getCredentialPair());
+        assertEquals(credentials2, rachel.getCredentialPair());
     }
 
     @Test
@@ -86,5 +87,8 @@ class UserTest {
         eason.setCredentialPair(newCredential1);
         assertEquals(newCredential1, eason.getCredentialPair());
         //add Rachel as newCredential 2
+        Credentials newCredential2 = new Credentials("klm", "$$$$$");
+        rachel.setCredentialPair(newCredential2);
+        assertEquals(newCredential2, rachel.getCredentialPair());
     }
 }

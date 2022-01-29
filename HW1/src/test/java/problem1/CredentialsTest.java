@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CredentialsTest {
     Credentials credentials;
-    User Eason = new User("Eason", "Lee","3012654560", "eason@gmail.com", new Credentials("abc", "######"));
+    User Eason = new User("Eason", "Lee","3012654560", "eason@gmail.com", new Credentials("abc", "#####"));
     // User Rachel = new User("Rachel","Lee","2053032640", "rachel@gmail.com", new Credentials("efg", "!!!!!"));
 
     @BeforeEach
@@ -23,8 +23,8 @@ class CredentialsTest {
 
     @Test
     void setUsername() {
-        credentials.setUsername("Jane Doe");
-        assertEquals("Jane Doe", credentials.getUsername());
+        credentials.setUsername("amy");
+        assertEquals("amy", credentials.getUsername());
     }
 
     @Test

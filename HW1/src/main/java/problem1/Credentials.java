@@ -1,5 +1,12 @@
 package problem1;
 
+/**
+ Credentials is a simple class that keeps track of a pair (username,
+ passwordHash), both encoded as Strings.
+ Note: encoding a password as String is a bad and insecure practice, but
+ please notice that we are *not*encoding a password as a String.Instead, we
+ are storing information about a hash of a password.
+ */
 public class Credentials {
     private String username;
     private String passwordHash;
@@ -45,5 +52,4 @@ public class Credentials {
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
-
 }

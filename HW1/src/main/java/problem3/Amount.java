@@ -1,5 +1,8 @@
 package problem3;
 
+/**
+ * Amount class has dollar and cent.
+ * */
 public class Amount {
     private int dollar;
     private int cent;
@@ -72,6 +75,12 @@ public class Amount {
 
     }
 
+    /**
+     * Double method.
+     * Returns the Amount object after converting dollar & cents to Bitcoins.
+     * @return the Amount object after converting dollar & cents to Bitcoins. Convert dollar to cents first then
+     * convert cents to bitcoins.
+     * */
     public Double times() {
         double bitcoins = (this.dollar * DOLLAR_TO_CENT + this.cent) * Cent_TO_Bitcoins;
         return bitcoins;

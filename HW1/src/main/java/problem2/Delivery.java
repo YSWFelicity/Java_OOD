@@ -1,5 +1,8 @@
 package problem2;
 
+/**
+ * Delivery class has start location, end location, start time, and end time.
+ * */
 public class Delivery {
     private String startingLocation;
     private String endLocation;

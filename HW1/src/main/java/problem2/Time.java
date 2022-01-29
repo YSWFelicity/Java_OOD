@@ -1,5 +1,8 @@
 package problem2;
 
+/**
+ * Time is a simple object that has specific hour, minute, and second.
+ * */
 public class Time {
     private int hour;
     private int minute;
