@@ -39,80 +39,80 @@ public class User {
     }
 
     /**
-     * Get the first name of this Owner.
-     * @return the first name of the Owner.
+     * Get the first name of this User.
+     * @return the first name of the User.
      * */
     public String getFirstName() {
         return firstName;
     }
 
     /**
-     * Sets the first name of the owner.
-     * @param firstName - set first name of this owner.
+     * Sets the first name of the User.
+     * @param firstName - set first name of this User.
      * */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     /**
-     * Return the last name of the Owner.
-     * @return the last name of the Owner.
+     * Return the last name of the User.
+     * @return the last name of the User.
      * */
     public String getLastName() {
         return lastName;
     }
 
     /**
-     * Sets the last name of the owner.
-     * @param lastName- set last name of this owner.
+     * Sets the last name of the User.
+     * @param lastName- set last name of this User.
      * */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     /**
-     * Return the phone number of the Owner.
-     * @return the phone number of the Owner.
+     * Return the phone number of the User.
+     * @return the phone number of the User.
      * */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     /**
-     * Sets the phone number of the owner.
-     * @param phoneNumber- set phone number of this owner.
+     * Sets the phone number of the User.
+     * @param phoneNumber- set phone number of this User.
      * */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
     /**
-     * Return the email address of the Owner.
-     * @return the email address of the Owner.
+     * Return the email address of the User.
+     * @return the email address of the User.
      * */
     public String getEmailAddress() {
         return emailAddress;
     }
 
     /**
-     * Sets the email address of the owner.
-     * @param emailAddress- set email address of this owner.
+     * Sets the email address of the User.
+     * @param emailAddress- set email address of this User.
      * */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
     /**
-     * Return the credential pair of the Owner.
-     * @return the credential pair of the Owner.
+     * Return the credential pair of the User.
+     * @return the credential pair of the User.
      * */
     public Credentials getCredentialPair() {
         return credentialPair;
     }
 
     /**
-     * Sets the credential pair of the owner.
-     * @param credentialPair- set credential pair of this owner.
+     * Sets the credential pair of the User.
+     * @param credentialPair- set credential pair of this User.
      * */
     public void setCredentialPair(Credentials credentialPair) {
         this.credentialPair = credentialPair;
