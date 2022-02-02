@@ -1,89 +1,65 @@
 package problem2;
 
-/**
- * Time is a simple object that has specific hour, minute, and second.
- * */
+/*** Time is an object that has a unique
+ * hour, minute and second. */
 public class Time {
-    private int hour;
-    private int minute;
-    private int second;
+    public static final Integer BASE_24 = 24;
+    public static final Integer SEXAGESIMAL = 60;
+    private Integer hour;
+    private Integer minute;
+    private Integer second;
 
     /**
-     * Constructor that creates a new Time object with the specified hour, minute, and second.
+     * Constructor that creates a new Time object with the specified hour, minute and second.
+     *
      * @param hour - hour of the new Time object.
-     * @param minute - minute of the new Time object.
-     * @param second - second of the new Time object.
-     * */
-    public Time(int hour, int minute, int second){
-        if(timeValid(hour,minute,second)){
+     * @param minute - minute of the new Time.
+     * @param second - second of the new Time.
+     */
+    public Time(Integer hour, Integer minute, Integer second) {
+        if (hour < 0 || hour >= BASE_24) {
+            System.out.println("Input hour is invalid.");
+        } else {
             this.hour = hour;
+        }
+
+        if (minute < 0 || minute >= SEXAGESIMAL) {
+            System.out.println("Input minute is invalid.");
+        } else {
             this.minute = minute;
+        }
+
+        if (second < 0 || second >= SEXAGESIMAL) {
+            System.out.println("Input second is invalid.");
+        } else {
             this.second = second;
         }
     }
 
     /**
-     * Helper method to valid the input of hour, minute, and second.
-     * @param hour - hour of the new Time object.
-     * @param minute - minute of the new Time object.
-     * @param second - second of the new Time object.
-     * @return true if inputs are valid.
-     * */
-    private boolean timeValid(int hour, int minute, int second){
-        final int minHour = 0, minMinute = 0, minSecond = 0;
-        final int maxHour = 23, maxMinute = 59, maxSecond = 59;
-        if(hour >= minHour && hour <= maxHour && minute >= minMinute && minute <= maxMinute && second >= minSecond
-                && second <= maxSecond){
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Returns the hour of the Time.
+     *
      * @return the hour of the Time.
-     * */
-    public int getHour() {
-        return hour;
-    }
-
-    /**
-     * Sets the hour of the Time.
-     * @param hour - Set the hour of the Time object.
-     * */
-    public void setHour(int hour) {
-        this.hour = hour;
+     */
+    public Integer getHour() {
+        return this.hour;
     }
 
     /**
      * Returns the minute of the Time.
+     *
      * @return the minute of the Time.
-     * */
-    public int getMinute() {
-        return minute;
-    }
-
-    /**
-     * Sets the minute of the Time.
-     * @param minute - Set the minute of the Time object.
-     * */
-    public void setMinute(int minute) {
-        this.minute = minute;
+     */
+    public Integer getMinute() {
+        return this.minute;
     }
 
     /**
      * Returns the second of the Time.
+     *
      * @return the second of the Time.
-     * */
-    public int getSecond() {
-        return second;
-    }
-
-    /**
-     * Sets the second of the Time.
-     * @param second - Set the second of the Time object.
-     * */
-    public void setSecond(int second) {
-        this.second = second;
+     */
+    public Integer getSecond() {
+        return this.second;
     }
 }

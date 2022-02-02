@@ -1,120 +1,92 @@
 package problem2;
 
-/**
- * Delivery class has start location, end location, start time, and end time.
- * */
+/*** Time is an object that has a unique starting time,
+ * end time, starting location and end location. */
 public class Delivery {
+    public static final Integer SEXAGESIMAL = 60;
+    private Time startingTime;
+    private Time endTime;
     private String startingLocation;
     private String endLocation;
-    private Time startTime;
-    private Time endTime;
-    private static final int SEXAGESIMAL = 60;
 
     /**
-     * Constructor that creates a new delivery object with the specified start location, end location, start time,
-     * and end time.
-     * @param startingLocation - start location of the new Delivery object.
-     * @param endLocation - end location of the new Delivery object.
-     * @param startTime - start time of the new Delivery.
+     * Constructor that creates a new Delivery object with the specified hour, minute and second.
+     *
+     * @param startingTime - starting time of the new Delivery object.
      * @param endTime - end time of the new Delivery.
-     * */
-    public Delivery(String startingLocation, String endLocation, Time startTime, Time endTime){
+     * @param startingLocation - starting location of the new Delivery.
+     * @param endLocation - end location of the new Delivery.
+     */
+    public Delivery(Time startingTime, Time endTime, String startingLocation, String endLocation) {
+        this.startingTime = startingTime;
+        this.endTime = endTime;
         this.startingLocation = startingLocation;
         this.endLocation = endLocation;
-        this.startTime = startTime;
-        this.endTime = endTime;
     }
 
     /**
-     * Returns the starting location of the Delivery.
-     * @return the starting location of the Delivery.
-     * */
-    public String getStartingLocation() {
-        return startingLocation;
+     * Returns the startingTime of the Delivery.
+     *
+     * @return the startingTime of the Delivery.
+     */
+    public Time getStartingTime() {
+        return this.startingTime;
     }
 
     /**
-     * Returns the end location of the Delivery.
-     * @return the end location of the Delivery.
-     * */
-    public String getEndLocation() {
-        return endLocation;
-    }
-
-    /**
-     * Returns the starting time of the Delivery.
-     * @return the starting time of the Delivery.
-     * */
-    public Time getStartTime() {
-        return startTime;
-    }
-
-    /**
-     * Returns the end time of the Delivery.
-     * @return the end time of the Delivery.
-     * */
+     * Returns the endTime of the Delivery.
+     *
+     * @return the endTime of the Delivery.
+     */
     public Time getEndTime() {
-        return endTime;
+        return this.endTime;
     }
 
     /**
-     * Sets the start location of the Delivery.
-     * @param startingLocation - Set the starting location of the Delivery object.
-     * */
-    public void setStartingLocation(String startingLocation) {
-        this.startingLocation = startingLocation;
+     * Returns the startingLocation of the Delivery.
+     *
+     * @return the startingLocation of the Delivery.
+     */
+    public String getStartingLocation() {
+        return this.startingLocation;
     }
 
     /**
-     * Sets the end location of the Delivery.
-     * @param endLocation - Set the ending location of the Delivery object.
-     * */
-    public void setEndLocation(String endLocation) {
-        this.endLocation = endLocation;
+     * Returns the endLocation of the Delivery.
+     *
+     * @return the endLocation of the Delivery.
+     */
+    public String getEndLocation() {
+        return this.endLocation;
     }
 
     /**
-     * Sets the start time of the Delivery.
-     * @param startTime - Set the start time of the Delivery object.
-     * */
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
+     * Returns the duration of the Delivery.
+     *
+     * @return the duration of the Delivery.
+     */
+    public Time getDuration() {
+        Integer startingSecond = this.startingTime.getSecond();
+        Integer startingMinute = this.startingTime.getMinute();
+        Integer startingHour = this.startingTime.getHour();
+        Integer endSecond = this.endTime.getSecond();
+        Integer endMinute = this.endTime.getMinute();
+        Integer endHour = this.endTime.getHour();
 
-    /**
-     * Sets the end time of the Delivery.
-     * @param endTime - Set the end time of the Delivery object.
-     * */
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
-    }
-
-    /**
-     * Returns the total time of the Delivery.
-     * @return the total time of the Delivery.
-     * */
-    public Time getDuration(){
-        Time endTime = this.getEndTime();
-        Time startTime = this.getStartTime();
-        int durHour = endTime.getHour() - startTime.getHour();
-        int durMinute = timeDifference(endTime.getMinute(),startTime.getMinute());
-        int durSecond = timeDifference(endTime.getSecond(),startTime.getSecond());
-        return new Time(durHour, durMinute, durSecond);
-    }
-
-    /**
-     * helper method.
-     * @param start - the start time.
-     * @param end - the end time.
-     * Returns the time difference.
-     * @return the time difference.
-     * */
-    private int timeDifference(int start, int end){
-        if (end > start){
-            return end - start;
-        }else{
-            return end + SEXAGESIMAL - start;
+        if (endSecond < startingSecond) {
+            endSecond += SEXAGESIMAL;
+            endMinute -= 1;
         }
-    }
 
+        if (endMinute < startingMinute) {
+            endMinute += SEXAGESIMAL;
+            endHour -= 1;
+        }
+        Integer second = endSecond - startingSecond;
+        Integer minute = endMinute - startingMinute;
+        Integer hour = endHour - startingHour;
+
+        Time duration = new Time(hour, minute, second);
+        return duration;
+    }
 }

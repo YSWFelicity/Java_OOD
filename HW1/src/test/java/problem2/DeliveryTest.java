@@ -5,77 +5,59 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DeliveryTest {
-    Delivery delivery;
-    Time startTime;
-    Time endTime;
-
-    /**
-     * Check if two Time objects are equal in data.
-     * @return ture if two Time objects have the same data. Otherwise, false.
-     * */
-    public static boolean timeEquals(Time orignalTime, Object o) {
-        if (orignalTime == o) return true;
-        if (!(o instanceof Time)) return false;
-        Time time = (Time) o;
-        return orignalTime.getHour() == time.getHour() &&
-                orignalTime.getMinute() == time.getMinute() &&
-                orignalTime.getSecond() == time.getSecond();
-    }
+public class DeliveryTest {
+    private Time expectStartingTime;
+    private Time expectStartingTime2;
+    private Time expectEndTime;
+    private String expectStartingLocation;
+    private String expectEndLocation;
+    private Delivery testDelivery;
+    private Delivery testDelivery2;
 
     @BeforeEach
-    void setUp() throws Exception {
-        startTime = new Time(9,30,30);
-        endTime = new Time(19,50,20);
-        delivery = new Delivery("Seattle", "New York", startTime, endTime);
+    public void setUp() throws Exception {
+        this.expectStartingTime = new Time(2,0,0);
+        this.expectStartingTime2 = new Time(2,30,30);
+        this.expectEndTime = new Time(3,15,15);
+        this.expectStartingLocation = "Seattle";
+        this.expectEndLocation = "Boston";
+        this.testDelivery = new Delivery(expectStartingTime, expectEndTime, expectStartingLocation, expectEndLocation);
+        this.testDelivery2 = new Delivery(expectStartingTime2, expectEndTime, expectStartingLocation, expectEndLocation);
     }
 
     @Test
-    void getStartingLocation() {
-        assertEquals("Seattle", delivery.getStartingLocation());
+    public void getStartingTime() {
+        assertEquals(expectStartingTime, testDelivery.getStartingTime());
+        assertEquals(expectStartingTime2, testDelivery2.getStartingTime());
     }
 
     @Test
-    void getEndLocation() {
-        assertEquals("New York", delivery.getEndLocation());
+    public void getEndTime() {
+        assertEquals(expectEndTime, testDelivery.getEndTime());
+        assertEquals(expectEndTime, testDelivery2.getEndTime());
     }
 
     @Test
-    void getStartTime() {
-        timeEquals(new Time(9,30,30), startTime);
+    public void getStartingLocation() {
+        assertEquals(expectStartingLocation, testDelivery.getStartingLocation());
+        assertEquals(expectStartingLocation, testDelivery2.getStartingLocation());
     }
 
     @Test
-    void getEndTime() {
-        timeEquals(new Time(19,50,20), endTime);
+    public void getEndLocation() {
+        assertEquals(expectEndLocation, testDelivery.getEndLocation());
+        assertEquals(expectEndLocation, testDelivery2.getEndLocation());
     }
 
     @Test
-    void setStartingLocation() {
-        delivery.setStartingLocation("Los Angeles");
-        assertEquals("Los Angeles", delivery.getStartingLocation());
-    }
-
-    @Test
-    void setEndLocation() {
-        delivery.setEndLocation("San Francisco");
-        assertEquals("San Francisco",delivery.getEndLocation());
-    }
-
-    @Test
-    void setStartTime() {
-        delivery.setStartTime(new Time(10,53,11));
-        timeEquals(new Time(10,53,11), delivery.getStartTime());
-    }
-
-    @Test
-    void setEndTime() {
-        delivery.setEndTime( new Time(16,22,15));
-        timeEquals(new Time(16,22,15), delivery.getEndTime());
-    }
-
-    @Test
-    void getDuration() {
-        timeEquals(new Time(10,19,50),delivery.getDuration());
+    public void getDuration() {
+        Time expectDuration = new Time(1, 44,15);
+        assertEquals(expectDuration.getHour(), testDelivery.getDuration().getHour());
+        assertEquals(expectDuration.getMinute(), testDelivery2.getDuration().getMinute());
+        assertEquals(expectDuration.getSecond(), testDelivery.getDuration().getSecond());
+        Time expectDuration2 = new Time(0,44,45);
+        assertEquals(expectDuration2.getHour(), testDelivery2.getDuration().getHour());
+        assertEquals(expectDuration2.getMinute(), testDelivery2.getDuration().getMinute());
+        assertEquals(expectDuration2.getSecond(), testDelivery2.getDuration().getSecond());
     }
 }

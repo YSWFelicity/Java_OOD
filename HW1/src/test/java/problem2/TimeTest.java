@@ -5,55 +5,55 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TimeTest {
-    Time time1;
-    Time time2;
+public class TimeTest {
+
+    private Integer expectHour;
+    private Integer expectMinute;
+    private Integer expectSecond;
+    private Integer expectHourInvalid1;
+    private Integer expectMinuteInvalid1;
+    private Integer expectSecondInvalid1;
+    private Integer expectHourInvalid2;
+    private Integer expectMinuteInvalid2;
+    private Integer expectSecondInvalid2;
+    private Time testTime1;
+    private Time testTime2;
+    private Time testTime3;
 
     @BeforeEach
-    void setUp() throws Exception{
-        time1 = new Time(10,39,50);
-        time2 = new Time(2,30,40);
+    public void setUp() throws Exception {
+        expectHour = 3;
+        expectMinute = 2;
+        expectSecond = 1;
+        expectHourInvalid1 = -1;
+        expectMinuteInvalid1 = -2;
+        expectSecondInvalid1 = -3;
+        expectHourInvalid2 = 24;
+        expectMinuteInvalid2 = 60;
+        expectSecondInvalid2 = 60;
+        testTime1 = new Time(expectHour, expectMinute, expectSecond);
+        testTime2 = new Time(expectHourInvalid1, expectMinuteInvalid1, expectSecondInvalid1);
+        testTime3 = new Time(expectHourInvalid2, expectMinuteInvalid2, expectSecondInvalid2);
     }
 
     @Test
-    void getHour() {
-        assertEquals(10,time1.getHour());
-        assertEquals(2, time2.getHour());
+    public void getHour() {
+        assertEquals(expectHour, testTime1.getHour());
+        assertEquals(null, testTime2.getHour());
+        assertEquals(null, testTime3.getHour());
     }
 
     @Test
-    void setHour() {
-        time1.setHour(12);
-        assertEquals(12,time1.getHour());
-        time2.setHour(22);
-        assertEquals(22,time2.getHour());
+    public void getMinute() {
+        assertEquals(expectMinute, testTime1.getMinute());
+        assertEquals(null, testTime2.getMinute());
+        assertEquals(null, testTime3.getMinute());
     }
 
     @Test
-    void getMinute() {
-        assertEquals(39,time1.getMinute());
-        assertEquals(30,time2.getMinute());
-    }
-
-    @Test
-    void setMinute() {
-        time1.setMinute(00);
-        assertEquals(00,time1.getMinute());
-        time2.setMinute(59);
-        assertEquals(59,time2.getMinute());
-    }
-
-    @Test
-    void getSecond() {
-        assertEquals(50,time1.getSecond());
-        assertEquals(40,time2.getSecond());
-    }
-
-    @Test
-    void setSecond() {
-        time1.setSecond(01);
-        assertEquals(01,time1.getSecond());
-        time2.setSecond(59);
-        assertEquals(59,time2.getSecond());
+    public void getSecond() {
+        assertEquals(expectSecond, testTime1.getSecond());
+        assertEquals(null, testTime2.getSecond());
+        assertEquals(null, testTime3.getSecond());
     }
 }
