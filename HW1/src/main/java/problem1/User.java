@@ -21,7 +21,7 @@ public class User {
     public User(String firstName, String lastName, String phoneNumber, String emailAddress, Credentials credentialPair) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = validPhoneNumber(phoneNumber);
         this.emailAddress = emailAddress;
         this.credentialPair = credentialPair;
     }
@@ -31,11 +31,12 @@ public class User {
      * @param phoneNumber - length of the new Time object.
      * @return true if inputs are valid.
      * */
-    private boolean validPhoneNumber(String phoneNumber){
+    private String validPhoneNumber(String phoneNumber){
         if(phoneNumber.length() == 10){
-            return true;
+            return phoneNumber;
         }
-        return false;
+        System.out.println("Invalid phone number.");
+        return " ";
     }
 
     /**

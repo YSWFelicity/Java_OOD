@@ -2,6 +2,7 @@ package problem1;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import problem2.Delivery;
 
 import static org.junit.jupiter.api.Assertions.*;
 
