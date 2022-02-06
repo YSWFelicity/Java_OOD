@@ -1,5 +1,8 @@
 package problem1;
 
+/**
+ * A class representing Vehicles with max occupancy of 2.
+ */
 public class Trucks extends Vehicles{
 
   /**
@@ -9,6 +12,6 @@ public class Trucks extends Vehicles{
    */
   public Trucks(float price, int numBookDays) throws IllegalPriceException {
     super(price, true, false, numBookDays);
-    super.maxOccupancy = 2;
+    this.maxOccupancy = 2;
   }
 }

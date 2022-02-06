@@ -6,22 +6,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CarsTest {
-  Cars Cars;
+class VansTest {
+  Vans vans;
 
   @BeforeEach
   void setUp() throws Exception {
-      Cars = new Cars(50,7);
+    vans = new Vans(70, 9);
   }
-
-//    @Test(expected = IllegalPriceException.class)
-//    public void invalidPrice() throws IllegalPriceException {
-//      Cars invalidPriceCars = new Cars(-5,7);
-//    }
   @Test
   void invalidPrice() throws IllegalPriceException {
     IllegalPriceException thrown = Assertions.assertThrows(IllegalPriceException.class, () -> {
-      Cars invalidPriceCars = new Cars(-5,7);
+      Trucks invalidPriceTrucks = new Trucks(-4,7);
     }, "Invalid price");
 
     Assertions.assertEquals("Invalid price exception", thrown.getMessage());
@@ -30,46 +25,46 @@ class CarsTest {
 
   @Test
   void getMaxOccupancy() {
-    assertEquals(5,Cars.getMaxOccupancy());
+    assertEquals(8,vans.getMaxOccupancy());
   }
 
   @Test
   void getPrice() {
-    assertEquals(50.0, Cars.getPrice());
+    assertEquals(70.0, vans.getPrice());
   }
 
   @Test
   void isLicense() {
-    assertTrue(Cars.equals(Cars));
+    assertTrue(vans.equals(vans));
   }
 
   @Test
   void isAllowDiff() {
-    assertTrue(Cars.equals(Cars));
+    assertTrue(vans.equals(vans));
   }
 
   @Test
   void getNumBookDays() {
-    assertEquals(7, Cars.getNumBookDays());
+    assertEquals(9, vans.getNumBookDays());
   }
 
   @Test
   void setMaxOccupancy() {
-    Cars.setMaxOccupancy(5);
-    assertEquals(5,Cars.getMaxOccupancy());
+    vans.setMaxOccupancy(8);
+    assertEquals(8,vans.getMaxOccupancy());
   }
 
-//  @Test
-//  void bookVehicles() throws IllegalBookException {
-//    Cars.bookVehicle(7, 5, "Seattle", "Seattle", true);
-//    assertEquals("True", "True", "LA", Cars.getMaxOccupancy());
-//  }
-
-
+  ////  @Test
+////  void bookVehicles() throws IllegalBookException {
+////    Cars.bookVehicle(7, 5, "Seattle", "Seattle", true);
+////    assertEquals("True", "True", "LA", Cars.getMaxOccupancy());
+////  }
+//
+//
   @Test
   void InvalidNumPassengers1() {
     IllegalBookException thrown = Assertions.assertThrows(IllegalBookException.class, () -> {
-      Cars.bookVehicle(7, -1, "Seattle", "LA",false);
+      vans.bookVehicle(9, -1, "Seattle", "Seattle",false);
     }, "Invalid Booking");
 
     Assertions.assertEquals("Invalid book exception", thrown.getMessage());
@@ -78,7 +73,7 @@ class CarsTest {
   @Test
   void InvalidNumPassengers2() {
     IllegalBookException thrown = Assertions.assertThrows(IllegalBookException.class, () -> {
-      Cars.bookVehicle(7, 6, "Seattle", "LA",false);
+      vans.bookVehicle(9, 9, "Seattle", "Seattle",false);
     }, "Invalid Booking");
 
     Assertions.assertEquals("Invalid book exception", thrown.getMessage());
@@ -87,18 +82,9 @@ class CarsTest {
   @Test
   void InvalidNumPassengers3() {
     IllegalBookException thrown = Assertions.assertThrows(IllegalBookException.class, () -> {
-      Cars.bookVehicle(7, 0, "Seattle", "Seattle",false);
+      vans.bookVehicle(9, 0, "Seattle", "Seattle",false);
     }, "Invalid Booking");
 
     Assertions.assertEquals("Invalid book exception", thrown.getMessage());
   }
-//  @Test
-//  void bookVehicles() throws IllegalBookException {
-//    IllegalBookException thrown = Assertions.assertThrows(IllegalBookException.class, () -> {
-//      Cars.bookVehicle(7, -1, "Seattle", "LA",false);
-//    }, "Invalid Booking");
-//
-//    Assertions.assertEquals("Invalid book exception", thrown.getMessage());
-//  }
-
 }

@@ -1,5 +1,8 @@
 package problem1;
 
+/**
+ * A class representing Vehicles with max occupancy of 5.
+ */
 public class Cars extends Vehicles{
 
   /**

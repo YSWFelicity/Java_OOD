@@ -1,5 +1,10 @@
 package problem1;
 
+/**
+ * A class representing a vehicle. Allow set price, max occupancy
+ * license, allow different pick-up and drop-off locations and number
+ * of booking days
+ */
 public class Vehicles {
 
   public int maxOccupancy = 0;
@@ -52,7 +57,8 @@ public class Vehicles {
     return false;
   }
 
-  public void bookVehicle(int numBookDays, int numPassengers, String pickup, String dropoff, boolean license) throws IllegalBookException { //Questions
+  public void bookVehicle(int numBookDays, int numPassengers, String pickUp, String dropOff,
+      boolean license) throws IllegalBookException { //Questions
     isBookValid(numBookDays);
     this.numBookDays = numBookDays;
     //add return (line 55 should be boolean instead of void)
