@@ -11,10 +11,10 @@ class CarsTest {
 
   @BeforeEach
   void setUp() throws Exception {
-      Cars = new Cars(50,7);
+    Cars = new Cars(50,7);
   }
 
-//    @Test(expected = IllegalPriceException.class)
+  //    @Test(expected = IllegalPriceException.class)
 //    public void invalidPrice() throws IllegalPriceException {
 //      Cars invalidPriceCars = new Cars(-5,7);
 //    }
@@ -49,6 +49,12 @@ class CarsTest {
   }
 
   @Test
+  void isAvailable() throws IllegalPriceException, IllegalBookException {
+    Cars = new Cars(50,0);
+    Cars.bookVehicle(1, 1, "Seattle", "Seattle", false);
+  }
+
+  @Test
   void getNumBookDays() {
     assertEquals(7, Cars.getNumBookDays());
   }
@@ -62,7 +68,7 @@ class CarsTest {
 //  @Test
 //  void bookVehicles() throws IllegalBookException {
 //    Cars.bookVehicle(7, 5, "Seattle", "Seattle", true);
-//    assertEquals("True", "True", "LA", Cars.getMaxOccupancy());
+//    assertEquals(7, 5, Cars.getNumBookDays());
 //  }
 
 

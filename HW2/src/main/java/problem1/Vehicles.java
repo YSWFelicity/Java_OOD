@@ -1,5 +1,7 @@
 package problem1;
 
+import java.util.Objects;
+
 /**
  * A class representing a vehicle. Allow set price, max occupancy
  * license, allow different pick-up and drop-off locations and number
@@ -7,10 +9,10 @@ package problem1;
  */
 public class Vehicles {
 
-  public int maxOccupancy = 0;
+  public int maxOccupancy = 8;
   private float price;
   private boolean license;
-  private boolean allowDiff; //Questions
+  private boolean allowDiff;
   private int numBookDays = 0;
 
   public Vehicles(float price, boolean license, boolean allowDiff, int numBookDays) throws IllegalPriceException {
@@ -57,19 +59,57 @@ public class Vehicles {
     return false;
   }
 
-  public void bookVehicle(int numBookDays, int numPassengers, String pickUp, String dropOff,
+  public boolean bookVehicle(int numBookDays, int numPassengers, String pickUp, String dropOff,
       boolean license) throws IllegalBookException { //Questions
-    isBookValid(numBookDays);
+    isBookValid(numBookDays, numPassengers, pickUp, dropOff);
     this.numBookDays = numBookDays;
+    return true;
     //add return (line 55 should be boolean instead of void)
   }
 
-  private void isBookValid(int numBookDays) throws IllegalBookException {
-    if(!this.isAvailable() || numBookDays <= 0 || numBookDays > this.maxOccupancy){
+  private void isBookValid(int numBookDays, int numPassengers, String PickUp, String DropOff) throws IllegalBookException {
+    if(!this.isAvailable() || numBookDays <= 0){
+      throw new IllegalBookException();
+    }
+    if(numPassengers > this.maxOccupancy) {
+      throw new IllegalBookException();
+    }
+    if(!PickUp.equals(DropOff)) {
       throw new IllegalBookException();
     }
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Vehicles vehicles = (Vehicles) o;
+    return maxOccupancy == vehicles.maxOccupancy
+        && Float.compare(vehicles.price, price) == 0 && license == vehicles.license
+        && allowDiff == vehicles.allowDiff && numBookDays == vehicles.numBookDays;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(maxOccupancy, price, license, allowDiff, numBookDays);
+  }
+
+  @Override
+  public String toString() {
+    return "Vehicles{" +
+        "maxOccupancy=" + maxOccupancy +
+        ", price=" + price +
+        ", license=" + license +
+        ", allowDiff=" + allowDiff +
+        ", numBookDays=" + numBookDays +
+        '}';
+  }
 }
+
+
 
 
