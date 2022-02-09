@@ -55,13 +55,6 @@ class TrucksTest {
     assertEquals(2,trucks.getMaxOccupancy());
   }
 
-////  @Test
-////  void bookVehicles() throws IllegalBookException {
-////    Cars.bookVehicle(7, 5, "Seattle", "Seattle", true);
-////    assertEquals("True", "True", "LA", Cars.getMaxOccupancy());
-////  }
-//
-//
   @Test
   void InvalidNumPassengers1() {
     IllegalBookException thrown = Assertions.assertThrows(IllegalBookException.class, () -> {
