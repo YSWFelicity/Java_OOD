@@ -21,13 +21,13 @@ public class RoofAndGutterCleaning extends Exterior{
     this.roofType = roofType;
   }
 
-  @Override
-  public double calculatePrice() {
-    addtionalFee = 0;
-    if (this.squareFootage > BASE_SQUARE_FOOTAGE) {
-      addtionalFee =
-    }
-    return (super.calculatePrice());
-  }
+//  @Override
+//  public double calculatePrice() {
+//    addtionalFee = 0;
+//    if (this.squareFootage > BASE_SQUARE_FOOTAGE) {
+//      addtionalFee =
+//    }
+//    return (super.calculatePrice());
+//  }
 
 }

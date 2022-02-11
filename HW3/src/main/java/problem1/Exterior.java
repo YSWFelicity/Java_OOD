@@ -34,7 +34,7 @@ public abstract class Exterior extends Service {
    * Calculates the exterior price in different situations.
    * @return double
    */
-  private double calculateExterior(){
+  protected double calculateExterior(){
     double finalPrice = 0;
     switch(this.basicInformation.getPropertySize()){
       case LARGE:
