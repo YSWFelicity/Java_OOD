@@ -6,9 +6,9 @@ package problem1;
  */
 public abstract class Exterior extends Service {
   protected static final double BASE_RATE_EXTERIOR = 80;
-  private static final double HOUR_SPENT_SMALL_HOUSE = 1;
-  private static final double HOUR_SPENT_MEDIUM_HOUSE = 2;
-  private static final double HOUR_SPENT_LARGE_HOUSE = 4;
+  private static final Integer HOUR_SPENT_SMALL_HOUSE = 1;
+  private static final Integer HOUR_SPENT_MEDIUM_HOUSE = 2;
+  private static final Integer HOUR_SPENT_LARGE_HOUSE = 4;
 
   /**
    * Constructs a new abstract class Exterior, with basicInformation.
@@ -30,23 +30,28 @@ public abstract class Exterior extends Service {
     return super.calculatePrice();
   }
 
+
+  public double calculateHour() {
+    Integer hour = 0;
+    switch(this.basicInformation.getPropertySize()){
+      case LARGE:
+        hour = HOUR_SPENT_LARGE_HOUSE;
+        break;
+      case MEDIUM:
+        hour = HOUR_SPENT_MEDIUM_HOUSE;
+        break;
+      default:
+        hour = HOUR_SPENT_SMALL_HOUSE;
+        break;
+    }
+    return hour;
+
+  }
   /**
    * Calculates the exterior price in different situations.
    * @return double
    */
   protected double calculateExterior(){
-    double finalPrice = 0;
-    switch(this.basicInformation.getPropertySize()){
-      case LARGE:
-        finalPrice = BASE_RATE_EXTERIOR * HOUR_SPENT_LARGE_HOUSE;
-        break;
-      case MEDIUM:
-        finalPrice = BASE_RATE_EXTERIOR * HOUR_SPENT_MEDIUM_HOUSE;
-        break;
-      default:
-        finalPrice = BASE_RATE_EXTERIOR * HOUR_SPENT_SMALL_HOUSE;
-        break;
-    }
-    return finalPrice;
+    return BASE_RATE_EXTERIOR * calculateHour();
   }
 }
