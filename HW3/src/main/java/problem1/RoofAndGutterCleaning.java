@@ -4,7 +4,7 @@ public class RoofAndGutterCleaning extends Exterior{
 
   private Double squareFootage;
   private RoofType roofType;
-  private static final Integer EXTRA_FEE = 50;
+  private static final Integer EXTRA_FEE_PER_HOUR = 50;
   private static final Integer BASE_SQUARE_FOOTAGE = 3000;
   private static final Integer EXTRA_FEE_MANSARD = 200;
 
