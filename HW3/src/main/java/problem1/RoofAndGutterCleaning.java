@@ -2,6 +2,10 @@ package problem1;
 
 import java.util.Objects;
 
+/**
+ * Represents a concrete class RoofAndGutterCleaning, extending Exterior,
+ * including the square footage of the house and the roof type.
+ */
 public class RoofAndGutterCleaning extends Exterior{
 
   private Double squareFootage;
@@ -13,8 +17,8 @@ public class RoofAndGutterCleaning extends Exterior{
   /**
    * Constructs a new abstract class Exterior, with basicInformation.
    *  @param basicInformation - basic information of the customer, expressed as a BasicInformation
-   * @param squareFootage
-   * @param roofType
+   * @param squareFootage - the square footage of the house
+   * @param roofType - the roof type of the house
    */
   public RoofAndGutterCleaning(BasicInformation basicInformation, Double squareFootage,
       RoofType roofType) {
@@ -23,6 +27,11 @@ public class RoofAndGutterCleaning extends Exterior{
     this.roofType = roofType;
   }
 
+  /**
+   * {@inheritDoc}
+   * Calculate the price after adding extra fee under two special conditions.
+   * @return price
+   */
   @Override
   public double calculatePrice() {
     double price = calculateExterior();
@@ -35,6 +44,13 @@ public class RoofAndGutterCleaning extends Exterior{
     return price;
   }
 
+  /**
+   * {@inheritDoc} indicates whether some other object passed as an argument is "equal to" the
+   * current instance
+   *
+   * @param o - an object to compare
+   * @return Boolean
+   */
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -47,11 +63,21 @@ public class RoofAndGutterCleaning extends Exterior{
     return Objects.equals(squareFootage, that.squareFootage) && roofType == that.roofType;
   }
 
+  /**
+   * {@inheritDoc} returns an integer representation of the object memory address
+   *
+   * @return double, enum
+   */
   @Override
   public int hashCode() {
     return Objects.hash(squareFootage, roofType);
   }
 
+  /**
+   * {@inheritDoc} returns the value given to it in string format
+   *
+   * @return String
+   */
   @Override
   public String toString() {
     return "RoofAndGutterCleaning{" +

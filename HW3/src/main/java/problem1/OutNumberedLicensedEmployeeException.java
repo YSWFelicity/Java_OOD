@@ -1,6 +1,8 @@
 package problem1;
 
-/** Exception class, thrown when too many employees are needed. */
+/**
+ * Exception class, thrown when too many employees are needed.
+ */
 public class OutNumberedLicensedEmployeeException extends Exception{
 
   public OutNumberedLicensedEmployeeException() {

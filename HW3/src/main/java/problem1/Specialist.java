@@ -46,7 +46,6 @@ public abstract class Specialist extends Service {
   /**
    * A helper to modify the number of licensed employees based on ifComplex and
    * the size of the property.
-   *
    */
   private void complexVerification() {
     if (this.ifComplex) {

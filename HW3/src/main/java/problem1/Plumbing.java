@@ -1,7 +1,7 @@
 package problem1;
 
 /**
- * Represents an concrete class Plumbing, extending Specialist.
+ * Represents a concrete class Plumbing, extending Specialist.
  */
 public class Plumbing extends Specialist{
 

@@ -30,7 +30,10 @@ public abstract class Exterior extends Service {
     return super.calculatePrice();
   }
 
-
+  /**
+   * Calculates the exterior hour in different sizes of the house.
+   * @return hour
+   */
   public double calculateHour() {
     Integer hour = 0;
     switch(this.basicInformation.getPropertySize()){
@@ -49,7 +52,7 @@ public abstract class Exterior extends Service {
   }
   /**
    * Calculates the exterior price in different situations.
-   * @return double
+   * @return price
    */
   protected double calculateExterior(){
     return BASE_RATE_EXTERIOR * calculateHour();

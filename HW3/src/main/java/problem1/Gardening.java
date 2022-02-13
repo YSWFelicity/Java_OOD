@@ -1,7 +1,7 @@
 package problem1;
 
 /**
- * Represents an concrete class WindowCleaning, extending Exterior,
+ * Represents a concrete class WindowCleaning, extending Exterior,
  * including the customer's basic information.
  */
 public class Gardening extends Exterior{

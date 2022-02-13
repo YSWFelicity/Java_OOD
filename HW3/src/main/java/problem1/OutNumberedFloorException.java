@@ -1,6 +1,8 @@
 package problem1;
 
-/** Exception class, thrown when there are too many floors. */
+/**
+ * Exception class, thrown when there are too many floors.
+ */
 public class OutNumberedFloorException extends Exception{
 
   public OutNumberedFloorException() {

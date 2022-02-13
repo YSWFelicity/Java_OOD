@@ -55,7 +55,6 @@ public class WindowCleaning extends Exterior{
   /**
    * {@inheritDoc} indicates whether some other object passed as an argument is "equal to" the
    * current instance
-   *
    * @param o - an object to compare
    * @return Boolean
    */

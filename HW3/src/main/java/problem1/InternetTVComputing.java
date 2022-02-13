@@ -1,5 +1,8 @@
 package problem1;
 
+/**
+ * Represents a concrete class InternetTVComputing, extending Specialist.
+ */
 public class InternetTVComputing extends Specialist {
 
   private static final double PERMITTING_FEE = 15;
@@ -35,11 +38,6 @@ public class InternetTVComputing extends Specialist {
     return super.calculatePrice() + PERMITTING_FEE;
   }
 
-  /**
-   * {@inheritDoc} returns an integer representation of the object memory address
-   *
-   * @return int
-   */
   @Override
   public int hashCode() {
     return super.hashCode();
