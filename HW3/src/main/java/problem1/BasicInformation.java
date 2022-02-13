@@ -3,7 +3,7 @@ package problem1;
 import java.util.Objects;
 
 /**
- * Represents an concrete class BasicInformation, including the customer's address, property size,
+ * Represents a concrete class BasicInformation, including the customer's address, property size,
  * number of previous services the customer has ordered, and whether the ordering service is
  * monthly subscribed.
  */
