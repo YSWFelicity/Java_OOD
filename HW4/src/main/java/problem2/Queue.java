@@ -4,10 +4,16 @@ import java.util.Arrays;
 import java.util.Objects;
 import problem1.Course;
 
+/**
+ * A class representing Queue implements ADT methods.
+ */
 public class Queue implements IQueue{
   private Integer[] items;
   private Integer totalLength;
 
+  /**
+   * Constructs a queue, with items set to null and totalLength queue to 0
+   */
   public Queue() {
     this.items = null;
     this.totalLength = 0;
@@ -15,9 +21,7 @@ public class Queue implements IQueue{
 
 
   /**
-   * Adds a Course to the end of the CourseCatalog.
-   *
-   * @return
+   * Creates and returns an empty Queue.
    */
   @Override
   public Queue emptyQueue() {
@@ -40,7 +44,7 @@ public class Queue implements IQueue{
    * @param n An Integer object.
    * @return A Queue having Integer n object.
    */
-  @Override
+  @Override //Question
   public Queue add(Integer n) {
     Queue newQueue = new Queue();
     Integer[] newItems = new Integer[this.totalLength+1];
@@ -72,13 +76,19 @@ public class Queue implements IQueue{
   /**
    * Remove the object.
    *
-   * @return a copy of the Queue with the given Integer removed.If the given Integer is not in the
-   * Queue, returns the Queue as it.
+   * @return a copy of the Queue with the first element removed.
    */
   @Override
   public Queue remove() {
-    return null;
+    Queue newQueue = new Queue();
+    Integer[] newItems = new Integer[this.totalLength-1];
+    for(int i = 1; i < this.totalLength; i++){
+      newItems[i] = this.items[i];
+    }
+    newQueue.items = newItems;
+    return newQueue;
   }
+
 
   /**
    * Remove the object.
@@ -87,8 +97,20 @@ public class Queue implements IQueue{
    * element, returns the Queue as it.
    */
   @Override
-  public Queue removeElement() {
-    return null;
+  public Queue removeElement(Integer n) { //Question about if () has integer
+    if (!contains(n)) return this;
+    Queue newQueue = new Queue();
+    Integer[] newItems = new Integer[this.totalLength-1];
+    int i = 0;
+    for(Integer item: this.items) {
+      if (item != n) {
+        newItems[i] = item;
+        i++;
+      }
+    }
+    newQueue.items = newItems;
+    newQueue.totalLength = this.totalLength -1;
+    return newQueue;
   }
 
   /**
@@ -101,6 +123,14 @@ public class Queue implements IQueue{
     return this.totalLength;
   }
 
+
+  /**
+   * {@inheritDoc} indicates whether some other object passed as an argument is "equal to" the
+   * current instance
+   *
+   * @param o - an object to compare
+   * @return boolean
+   */
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -114,6 +144,11 @@ public class Queue implements IQueue{
         queue.totalLength);
   }
 
+  /**
+   * {@inheritDoc} returns an integer representation of the object memory address
+   *
+   * @return int
+   */
   @Override
   public int hashCode() {
     int result = Objects.hash(totalLength);
@@ -121,6 +156,11 @@ public class Queue implements IQueue{
     return result;
   }
 
+  /**
+   * {@inheritDoc} returns an String representation of the object
+   *
+   * @return String
+   */
   @Override
   public String toString() {
     return "Queue{" +

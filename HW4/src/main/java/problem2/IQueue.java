@@ -1,5 +1,8 @@
 package problem2;
 
+/**
+ * An interface to define the ADT methods.
+ */
 public interface IQueue {
 
   /**
@@ -39,7 +42,7 @@ public interface IQueue {
    * @return a copy of the Queue with the given Integer removed.If the given Integer is not in the
    * element, returns the Queue as it.
    */
-  Queue removeElement();
+  Queue removeElement(Integer n);
 
   /**
    * Gets the number of items in the Queue.
