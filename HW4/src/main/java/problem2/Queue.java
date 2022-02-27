@@ -12,7 +12,7 @@ public class Queue implements IQueue{
   private Integer totalLength;
 
   /**
-   * Constructs a queue, with items set to null and totalLength queue to 0
+   * Constructs a queue, with items queue to null and totalLength queue to 0
    */
   public Queue() {
     this.items = null;
@@ -44,7 +44,7 @@ public class Queue implements IQueue{
    * @param n An Integer object.
    * @return A Queue having Integer n object.
    */
-  @Override //Question
+  @Override
   public Queue add(Integer n) {
     Queue newQueue = new Queue();
     Integer[] newItems = new Integer[this.totalLength+1];
@@ -97,7 +97,7 @@ public class Queue implements IQueue{
    * element, returns the Queue as it.
    */
   @Override
-  public Queue removeElement(Integer n) { //Question about if () has integer
+  public Queue removeElement(Integer n) {
     if (!contains(n)) return this;
     Queue newQueue = new Queue();
     Integer[] newItems = new Integer[this.totalLength-1];
