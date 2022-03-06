@@ -13,7 +13,7 @@ public class Band extends Group{
   /**
    * Constructs a Band, with name and a collection of members
    * @param name    - String, name of the group
-   * @param members - Set of Person, collection of members
+   * @param members - Set of Recording Artist, collection of members
    */
   public Band(String name, Set<RecordingArtist> members) {
     this.name = name;
