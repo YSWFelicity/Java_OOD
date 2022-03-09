@@ -8,8 +8,10 @@ public class LoanApplication {
 
   private Name loanApplicant;
   private Name loanCoApplicant;
-  private ContactInfo applicantsContactInfo; private String loanID;
-  private LocalDate dateLoanSubmitted; private Double requestedAmount;
+  private ContactInfo applicantsContactInfo;
+  private String loanID;
+  private LocalDate dateLoanSubmitted;
+  private Double requestedAmount;
   private Double annualAPR;
   private Integer loanDurationInYears;
 
