@@ -134,39 +134,40 @@ public class CollegeAthleteRegistery implements ICollegeAthleteRegistery {
         return findCollegeAthleteByAttending();
       }
     }
+    return null;
   }
 
-    /**
-     * Find and return all CollegeAthletes whose total earnings so far are higher than the provided
-     * input argument.
-     *
-     * @param totalEarningsThusFar
-     * @return
-     */
-    public CollegeAthleteRegistery findCollegeAthleteByEarnings(Double totalEarningsThusFar)
+  /**
+   * Find and return all CollegeAthletes whose total earnings so far are higher than the provided
+   * input argument.
+   *
+   * @param totalEarningsThusFar
+   * @return
+   */
+  public CollegeAthleteRegistery findCollegeAthleteByEarnings(Double totalEarningsThusFar)
       throws DuplicateCollegeAthleteException {
-      CollegeAthleteRegistery newList = createEmpty();
+    CollegeAthleteRegistery newList = createEmpty();
 
-      Node cur = this.head;
-      int i = 0;
-      while (i < numOfNode) {
-        i++;
-        while (!cur.getCollegeAthlete().getTotalEarningsThusFar().equals(totalEarningsThusFar)) {
-          cur = cur.getNextNode();
-        }
-        newList.add(cur.getCollegeAthlete());
+    Node cur = this.head;
+    int i = 0;
+    while (i < numOfNode) {
+      i++;
+      while (!cur.getCollegeAthlete().getTotalEarningsThusFar().equals(totalEarningsThusFar)) {
+        cur = cur.getNextNode();
       }
-      return newList;
+      newList.add(cur.getCollegeAthlete());
     }
-
-    /**
-     * Find and return all College Athletes who are attending a college specified by an input
-     * argument.
-     *
-     * @return
-     */
-    @Override
-    public CollegeAthleteRegistery findCollegeAthleteByAttending () {
-      return null;
-    }
+    return newList;
   }
+
+  /**
+   * Find and return all College Athletes who are attending a college specified by an input
+   * argument.
+   *
+   * @return
+   */
+  @Override
+  public CollegeAthleteRegistery findCollegeAthleteByAttending () {
+    return null;
+  }
+}

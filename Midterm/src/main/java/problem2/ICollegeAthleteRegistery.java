@@ -1,6 +1,5 @@
 package problem2;
 
-
 import java.net.CookieHandler;
 import java.util.ConcurrentModificationException;
 import java.util.EmptyStackException;
