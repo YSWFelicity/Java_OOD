@@ -29,11 +29,11 @@ public interface ICollegeAthleteRegistery {
 
   /**
    * Modify information about an athlete
-   * @param Info
+   * @param medals, totalEarningsThusFar, corporateDeals
    * @return string name
    * @throws InvalidCollegeAthleteException
    */
-  CollegeAthlete modifyInfo(String Info) throws InvalidCollegeAthleteException;
+  CollegeAthlete modifyInfo(String[] medals, Double totalEarningsThusFar, String[] corporateDeals) throws InvalidCollegeAthleteException;
 
   /**
    * Remove a specific CollegeAthlete from the CollegeAthleteRegistery.
@@ -51,10 +51,10 @@ public interface ICollegeAthleteRegistery {
 
   /**
    * Find and return all CollegeAthletes whose total earnings so far are higher than the provided input argument.
-   * @param annualEarnings
+   * @param totalEarningsThusFar
    * @return
    */
-  CollegeAthleteRegistery findCollegeAthleteByEarnings(Double annualEarnings)
+  CollegeAthleteRegistery findCollegeAthleteByEarnings(Double totalEarningsThusFar)
       throws DuplicateCollegeAthleteException;
 
   /**

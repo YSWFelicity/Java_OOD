@@ -1,17 +1,20 @@
 package problem2;
 
-public class CollegeAthleteRegistery implements ICollegeAthleteRegistery{
+public class CollegeAthleteRegistery implements ICollegeAthleteRegistery {
+
   private Node head;
   private int numOfNode;
 
-  public CollegeAthleteRegistery(Node head, int numOfNode) {
+  public CollegeAthleteRegistery() {
     this.head = null;
     this.numOfNode = 0;
   }
 
+
   public static CollegeAthleteRegistery createEmpty() {
     return new CollegeAthleteRegistery();
   }
+
 
   /**
    * Count the number of CollegeAthletes in the CollegeAthleteRegistery.
@@ -67,13 +70,19 @@ public class CollegeAthleteRegistery implements ICollegeAthleteRegistery{
   /**
    * Modify information about an athlete
    *
-   * @param Info
+   * @param medals, totalEarningsThusFar, corporateDeals
    * @return string name
    * @throws InvalidCollegeAthleteException
    */
   @Override
-  public CollegeAthlete modifyInfo(String Info) throws InvalidCollegeAthleteException {
+  public CollegeAthlete modifyInfo(String[] medals, Double totalEarningsThusFar,
+      String[] corporateDeals) throws InvalidCollegeAthleteException {
     Node cur = this.head;
+    while (!cur.getCollegeAthlete().getMedals().equals(medals) || !cur.getCollegeAthlete()
+        .getTotalEarningsThusFar().equals(totalEarningsThusFar)
+        || !cur.getCollegeAthlete().getCorporateDeals().equals(corporateDeals)) {
+      cur = cur.getNextNode();
+    }
     if (cur.getCollegeAthlete() == null) {
       throw new InvalidCollegeAthleteException();
     }
@@ -92,7 +101,8 @@ public class CollegeAthleteRegistery implements ICollegeAthleteRegistery{
     Node cur = dummy;
 
     while (cur != null) {
-      if (cur.getNextNode() == null || !cur.getNextNode().getCollegeAthlete().equals(collegeAthlete)) {
+      if (cur.getNextNode() == null || !cur.getNextNode().getCollegeAthlete()
+          .equals(collegeAthlete)) {
         cur = cur.getNextNode();
         continue;
       }
@@ -118,45 +128,45 @@ public class CollegeAthleteRegistery implements ICollegeAthleteRegistery{
    */
   @Override
   public CollegeAthleteRegistery findCollegeAthleteByDiscipline(String discipline) {
-    return null;
-  }
-
-  /**
-   * Find and return all CollegeAthletes whose total earnings so far are higher than the provided
-   * input argument.
-   *
-   * @param annualEarnings
-   * @return
-   */
-  @Override
-  public CollegeAthleteRegistery findCollegeAthleteByEarnings(Double annualEarnings)
-      throws DuplicateCollegeAthleteException {
-    CollegeAthleteRegistery newList = createEmpty();
-
     Node cur = this.head;
-    int i = 0;
-    while (i < numOfNode) {
-      i++;
-      while (!cur.getCollegeAthlete().getTotalEarningsThusFar().equals(annualEarnings)) {
-        cur = cur.getNextNode();
+    while (cur != null) {
+      if (cur.getCollegeAthlete().equals(discipline)) {
+        return findCollegeAthleteByAttending();
       }
-      newList.add(cur.getCollegeAthlete());
     }
-    return newList;
   }
 
-  private CollegeAthleteRegistery createEmpty() {
-    return new CollegeAthleteRegistery();
-  }
+    /**
+     * Find and return all CollegeAthletes whose total earnings so far are higher than the provided
+     * input argument.
+     *
+     * @param totalEarningsThusFar
+     * @return
+     */
+    public CollegeAthleteRegistery findCollegeAthleteByEarnings(Double totalEarningsThusFar)
+      throws DuplicateCollegeAthleteException {
+      CollegeAthleteRegistery newList = createEmpty();
 
-  /**
-   * Find and return all College Athletes who are attending a college specified by an input
-   * argument.
-   *
-   * @return
-   */
-  @Override
-  public CollegeAthleteRegistery findCollegeAthleteByAttending() {
-    return null;
+      Node cur = this.head;
+      int i = 0;
+      while (i < numOfNode) {
+        i++;
+        while (!cur.getCollegeAthlete().getTotalEarningsThusFar().equals(totalEarningsThusFar)) {
+          cur = cur.getNextNode();
+        }
+        newList.add(cur.getCollegeAthlete());
+      }
+      return newList;
+    }
+
+    /**
+     * Find and return all College Athletes who are attending a college specified by an input
+     * argument.
+     *
+     * @return
+     */
+    @Override
+    public CollegeAthleteRegistery findCollegeAthleteByAttending () {
+      return null;
+    }
   }
-}
