@@ -21,23 +21,23 @@ class EmptyPriorityQueueTest {
     assertTrue(testEmptyPriorityQueue.isEmpty());
   }
 
-//  @Test
-//  void peek() { //Question
-//    InvalidCallException thrown = Assertions.assertThrows(InvalidCallException.class, () -> {
-//      testEmptyPriorityQueue.peek();
-//    }, "Invalid Call Exception");
-//
-//    Assertions.assertEquals("Invalid Call Exception", thrown.getMessage());
-//  }
-//
-//  @Test
-//  void pop() { //Question
-//    InvalidCallException thrown = Assertions.assertThrows(InvalidCallException.class, () -> {
-//      testEmptyPriorityQueue.pop();
-//    }, "Invalid Call Exception");
-//
-//    Assertions.assertEquals("Invalid Call Exception", thrown.getMessage());
-//  }
+  @Test
+  void peek() {
+    InvalidCallException thrown = Assertions.assertThrows(InvalidCallException.class, () -> {
+      testEmptyPriorityQueue.peek();
+    }, "Invalid Call Exception");
+
+    Assertions.assertEquals("Call peek() on an empty PriorityQueue", thrown.getMessage());
+  }
+
+  @Test
+  void pop() {
+    InvalidCallException thrown = Assertions.assertThrows(InvalidCallException.class, () -> {
+      testEmptyPriorityQueue.pop();
+    }, "Invalid Call Exception");
+
+    Assertions.assertEquals("Call pop() on an empty PriorityQueue", thrown.getMessage());
+  }
 
 
   @Test
