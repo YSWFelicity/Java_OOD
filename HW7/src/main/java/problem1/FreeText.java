@@ -12,15 +12,31 @@ public class FreeText implements IValidator<String>{
   private Integer numberOfCharactersPerLine;
 
   /**
-   * isValid is a method to check whether a given string will provide the number of lines in the text field and the number
-   * of characters allowed per line.
+   * Constructor
+   *
+   * @param lines - the number of lines in the text field
+   * @param numberOfCharactersPerLine - the number of characters allowed per line
+   *
+   */
+  public FreeText(Integer lines, Integer numberOfCharactersPerLine) {
+    this.lines = lines;
+    this.numberOfCharactersPerLine = numberOfCharactersPerLine;
+  }
+
+  /**
+   * isValid is a method to check whether a given string will provide the number of lines in the
+   * text field and the number of characters allowed per line.
    *
    * @param input - the given input, expected as a string
-   * @return input must be no longer than the number of lines multiplied by the number of characters allowed per line.
+   * @return input must be no longer than the number of lines multiplied by the number of characters
+   * allowed per line.
    */
   @Override
   public boolean isValid(String input) {
-    return input.length() <= this.lines * this.numberOfCharactersPerLine;
+    if (input.length() <= this.lines * this.numberOfCharactersPerLine) {
+      return true;
+    }
+    return false;
   }
 
   /**

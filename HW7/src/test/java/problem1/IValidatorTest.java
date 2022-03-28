@@ -7,24 +7,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class IValidatorTest {
-  Password testPassword;
-  private Integer expectedMinLength;
-  private Integer expectedMaxLength;
-  private Integer expectedMinLowercase;
-  private Integer expectedMinUppercase;
-  private Integer expectedMinDigits;
-
-  Phone testPhone;
-  private Integer expectedSpecifiedLength;
-
-  FreeText testFreeText;
-  private Integer expectedLines;
-  private Integer expectedNumberOfCharactersPerLine;
-
   RadioButton testRadioButton;
   CheckBox testCheckBox;
   Number testNumber;
   Number testNumber1;
+
+  Password testPassword;
+  Password testPassword1;
+  Phone testPhone;
+  Phone testPhone1;
+  FreeText testFreeText;
+  FreeText testFreeText2;
 
   @BeforeEach
   void setUp() {
@@ -32,10 +25,13 @@ class IValidatorTest {
     testNumber = new Number(10.0, 1000.0, 2);
     testNumber1 = new Number(20.0, 1000.0, -5);
     testCheckBox = new CheckBox();
-    testPassword = new Password(10, 0, 0, 0, 5);
-    testPhone = new Phone(9);
-    testFreeText = new FreeText();
 
+    testPassword = new Password(5, 10, 1, 1, 1);
+    testPassword1 = new Password(4, 10, 1, 1, 1);
+    testPhone = new Phone(9);
+    testPhone1 = new Phone(8);
+    testFreeText = new FreeText(2, 3);
+    testFreeText2 = new FreeText(1, 3);
   }
 
   @Test
@@ -84,6 +80,7 @@ class IValidatorTest {
     assertTrue(testNumber.isNumber("-200.45"));
   }
 
+
   @Test
   void isValidCheckBoxClass() {
     assertTrue(testCheckBox.isValid(null));
@@ -112,24 +109,62 @@ class IValidatorTest {
   }
 
   @Test
-  void isValidFreeText() {
-//    assertFalse(testFreeText.isValid("0"));
+  void isValidPhoneClass() {
+    assertFalse(testPhone.isValid("12345678"));
+    assertFalse(testPhone.isValid("9"));
+    assertTrue(testPhone.isValid("123456789"));
+    assertFalse(testPhone.isValid("abc"));
+    assertFalse(testPhone.isValid("abc123"));
+  }
+
+  @Test
+  void isValidPasswordClass() {
+    assertFalse(testPassword.isValid(" "));
+    assertFalse(testPassword.isValid("12345"));
+    assertTrue(testPassword.isValid("Abc123"));
+    assertFalse(testPassword.isValid("abc123"));
+    assertFalse(testPassword.isValid("abc 123"));
+    assertFalse(testPassword.isValid("ABC123"));
+    assertFalse(testPassword.isValid("ABC 123"));
+    assertFalse(testPassword.isValid("abcdefg"));
+    assertFalse(testPassword.isValid("ABCDEFG"));
+    assertFalse(testPassword.isValid("######"));
+    assertFalse(testPassword.isValid("Ab1"));
+    assertFalse(testPassword.isValid("Ab1 "));
+  }
+
+  @Test
+  void isValidFreeTextClass() {
+    assertFalse(testFreeText.isValid("abcdefg"));
+    assertTrue(testFreeText.isValid("12345"));
   }
 
   @Test
   void testEqualsSameObjects() {
     assertEquals(testNumber, testNumber);
+    assertEquals(testPassword, testPassword);
+    assertEquals(testPhone, testPhone);
+    assertEquals(testFreeText, testFreeText);
   }
 
   @Test
   void testEqualsNullObjects() {
     assertNotEquals(null, testNumber);
+    assertNotEquals(null, testPassword);
+    assertNotEquals(null, testPhone);
+    assertNotEquals(null, testFreeText);
   }
 
   @Test
   void testEqualsSameFieldsInGeneral() {
     Number testNumber1 = new Number(10.0, 1000.0, 2);
     assertEquals(testNumber, testNumber1);
+    Password testPassword1 = new Password(5, 10, 1, 1, 1);
+    assertEquals(testPassword, testPassword1);
+    Phone testPhone1 = new Phone(9);
+    assertEquals(testPhone, testPhone1);
+    FreeText testFreeText1 = new FreeText(2, 3);
+    assertEquals(testFreeText, testFreeText1);
   }
 
   @Test
@@ -142,6 +177,8 @@ class IValidatorTest {
   void testEqualsDiffMaxValue() {
     Number testNumber1 = new Number(10.0, 105.0, 2);
     assertNotEquals(testNumber, testNumber1);
+    Password testPassword1 = new Password(5, 12, 1, 1, 1);
+    assertNotEquals(testPassword, testPassword1);
   }
 
   @Test
@@ -151,13 +188,13 @@ class IValidatorTest {
   }
 
   @Test
-  void testHashCode1() {
+  void testHashCode() {
     assertEquals(testNumber.hashCode(), testNumber.hashCode());
   }
 
   @Test
   void testHashCode2() {
-    assertEquals(testPassword.hashCode(), testPassword.hashCode());
+    assertEquals(testPassword.hashCode(),testPassword.hashCode());
   }
 
   @Test
@@ -170,40 +207,40 @@ class IValidatorTest {
     assertEquals(testFreeText.hashCode(), testFreeText.hashCode());
   }
 
-
   @Test
-  void testToString1() {
+  void testToString() {
     String s1 = "Number{" +
         "minValue=" + testNumber.getMinValue() +
         ", maxValue=" + testNumber.getMaxValue() +
         ", maxDecimalPlaces=" + testNumber.getMaxDecimalPlaces() +
         '}';
     assertEquals(s1, testNumber.toString());
+
   }
 
   @Test
   void testToString2() {
     String s2 = "Password{" +
-        "minLength=" + expectedMinLength +
-        ", maxLength=" + expectedMaxLength +
-        ", minLowercase=" + expectedMinLowercase +
-        ", minUppercase=" + expectedMinUppercase +
-        ", minDigits=" + expectedMinDigits +
+        "minLength=" + testPassword +
+        ", maxLength=" + testPassword +
+        ", minLowercase=" + testPassword +
+        ", minUppercase=" + testPassword +
+        ", minDigits=" + testPassword +
         '}';
   }
 
   @Test
   void testToString3() {
     String s3 = "Phone{" +
-        "specifiedLength=" + expectedSpecifiedLength +
+        "specifiedLength=" + testPhone +
         '}';
   }
 
   @Test
   void testToString4() {
     String s4 = "FreeText{" +
-        "lines=" + expectedLines +
-        ", numberOfCharactersPerLine=" + expectedSpecifiedLength +
+        "lines=" + testFreeText +
+        ", numberOfCharactersPerLine=" + testFreeText +
         '}';
   }
 }
