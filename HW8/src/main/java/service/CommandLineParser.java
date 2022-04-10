@@ -123,12 +123,12 @@ public class CommandLineParser {
       throw new CommandLineExceptions.LackArgumentsException("Error: No command is provided.");
     }
 
-    if (this.emailCommand && !this.emailTemplateAddress.equals(EMAIL_TEMPLATE)) {
+    if (this.emailCommand && this.emailTemplateAddress.equals(EMAIL_TEMPLATE)) {
       throw new CommandLineExceptions.LackArgumentsException("Error: --email provided "
           + "but no --email-template was given.");
     }
 
-    if (this.letterCommand && !this.letterTemplateAddress.equals(LETTER_TEMPLATE)) {
+    if (this.letterCommand && this.letterTemplateAddress.equals(LETTER_TEMPLATE)) {
       throw new CommandLineExceptions.LackArgumentsException("Error: --letter provided "
           + "but no --letter-template was given.");
     }
