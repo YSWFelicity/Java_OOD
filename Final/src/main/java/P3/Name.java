@@ -1,8 +1,10 @@
-package p1;
+package P3;
 
 import java.util.Objects;
+
 /*
-Class Name contains information about the first, middle and last name. All name parts are encoded as Strings.
+Class Name contains information about the first, middle and last name. All name parts
+are encoded as Strings.
 */
 public class Name {
 
@@ -30,16 +32,21 @@ public class Name {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Name)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     Name name = (Name) o;
-    return Objects.equals(getFirstName(), name.getFirstName()) &&
-        Objects.equals(getMiddleName(), name.getMiddleName()) && Objects.equals(getLastName(), name.getLastName());
+    return Objects.equals(firstName, name.firstName) && Objects.equals(middleName,
+        name.middleName) && Objects.equals(lastName, name.lastName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getFirstName(), getMiddleName(), getLastName()); }
+    return Objects.hash(firstName, middleName, lastName);
+  }
 
   @Override
   public String toString() {
